@@ -9,7 +9,7 @@ st.markdown('''Você foi contratado(a) para uma consultoria, e seu trabalho envo
 st.markdown('''Um grande cliente do segmento pediu para que a consultoria desenvolvesse um **dashboard interativo** e que gere insights relevantes para tomada de decisão. 
             Além disso, solicitaram que fosse desenvolvido um **modelo de Machine Learning** para fazer o forecasting do preço do petróleo.''')
 
-df = pd.read_excel('data/RBRTEd.xls',sheet_name="Data 1")
+df = pd.read_excel('data/RBRTEd.xls',sheet_name="Data 1", skiprows=2)
 
 st.image('images/Imagem1-1.png')
 
