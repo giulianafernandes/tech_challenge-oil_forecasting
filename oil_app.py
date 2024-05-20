@@ -47,7 +47,7 @@ st.line_chart(data= dados, x='date', y='dollars_per_barrel',
 
 #>>>>>>>>> TABS
 
-tab1, tab2, tab3 = st.tabs(["Modelo", "Dashboard", "Contexto Histórico"])
+tab1, tab2, tab3, tab4 = st.tabs(["Modelo", "Dashboard", "Contexto Histórico", "Info"])
 
 with tab1:
     #Modelo de Machine Learning
@@ -113,35 +113,11 @@ with tab1:
     prediction = prediction.reshape((-1))
 
 
-    # >>>>>>> gráfico
     st.subheader('Predições do Preço do Barril de Petróleo BRENT', divider = 'orange')
 
     # métricas
     st.markdown(f'#### 📈 mape: {mape:.4f} | rmse: {rmse:.4f}')
-
-    trace1 = go.Scatter(x= date_train,
-                        y= price_train,
-                        mode = 'lines',
-                        name = 'Data')
-
-    trace3 = go.Scatter(x= date_test,
-                        y= prediction,
-                        mode = 'lines',
-                        name = 'Predição')
-
-    trace2 = go.Scatter(x= date_test,
-                        y= price_test,
-                        mode = 'lines',
-                        name = 'Dados reais')
-
-    layout = go.Layout(
-                    xaxis = {'title': 'Data'},
-                    yaxis = {'title': 'Preço do Barril'})
-
-    fig = go.Figure(data=[trace1, trace2, trace3], layout=layout)
-    st.plotly_chart(fig, use_container_width=True)
-
-
+    
     # >>>>>>> tabela
     def predict(num_prediction, model):
         prediction_list = price_data[-look_back:]
@@ -181,15 +157,42 @@ with tab1:
 
     st.dataframe(results.tail(21), width=1000)
     
+    # >>>>>>> gráfico
+    
+    results_lastyear = results.loc['2023-05-01':]
+    
+    plot_data = [go.Scatter(x= results_lastyear.index,
+                            y= results_lastyear['Preço real | US$ por Barril'],
+                            name= 'Valor Real'),
+                go.Scatter(x= results_lastyear.index,
+                            y= results_lastyear['Previsão'],
+                            name= 'Predição')]
+
+    plot_layout = go.Layout(title= 'Forecast - Barril de Petróleo Brent')
+    fig = go.Figure(data=plot_data, layout=plot_layout)
+    st.plotly_chart(fig, use_container_width=True)
+    
     # /////////////////////////////////////////
     st.image('images/Imagem5-5.png')
 
 with tab2:
     #Dashboard Power Bi entra aqui 
     st.subheader('Dashboard', divider = 'orange')
+    st.image('images/dashboard.jpeg')
+    st.image('images/dashboard2.jpeg')
     st.image('images/Imagem6-6.png')
 
 with tab3:
     #Situações geopoliticas que podem ter impactado em certos momentos na demanda pelo barril
     st.subheader('Contexto Histórico', divider = 'orange')
     st.image('images/Imagem2-2.png')
+    
+with tab4:
+    #Situações geopoliticas que podem ter impactado em certos momentos na demanda pelo barril
+    st.subheader('Informações sobre o trabalho', divider = 'orange')
+    st.markdown('**GRUPO 41: Giuliana de Sousa Fernandes RM352002 e Larissa Suelen Lima da Silva RM350906**')
+    st.markdown('Dados adquiridos no site da EIA - U.S. Energy Information Administration')
+    st.link_button('Europe Brent Spot Price FOB', '(https://www.eia.gov/dnav/pet/hist/rbrteD.htm')
+    st.link_button('GitHub do projeto', 'https://github.com/giulianafernandes/tech_challenge-oil_forecasting')
+    
+    st.image('images/Imagem3.png')
