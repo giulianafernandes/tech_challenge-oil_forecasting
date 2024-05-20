@@ -11,7 +11,7 @@ from keras.preprocessing.sequence import TimeseriesGenerator
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import LSTM
-from keras.optimizers import Adam
+# from keras.optimizers import Adam
 from keras.metrics import MeanSquaredError
 
 from sklearn.preprocessing import MinMaxScaler
