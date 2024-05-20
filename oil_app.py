@@ -193,8 +193,8 @@ with tab4:
     st.markdown('**GRUPO 41: Giuliana de Sousa Fernandes RM352002 e Larissa Suelen Lima da Silva RM350906**')
     st.markdown('Dados adquiridos no site da EIA - U.S. Energy Information Administration')
     
-    st.link_button('GitHub do projeto', 'https://github.com/giulianafernandes/tech_challenge-oil_forecasting')
-    
     st.link_button('Europe Brent Spot Price', 'https://www.eia.gov/dnav/pet/hist/rbrteD.htm')
+    
+    st.link_button('GitHub do projeto', 'https://github.com/giulianafernandes/tech_challenge-oil_forecasting')
     
     st.image('images/Imagem3.png')
