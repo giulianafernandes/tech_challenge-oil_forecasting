@@ -11,9 +11,8 @@ from keras.preprocessing.sequence import TimeseriesGenerator
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import LSTM
-# from keras.optimizers import Adam
+from keras.optimizers import Adam
 from keras.metrics import MeanSquaredError
-
 from sklearn.preprocessing import MinMaxScaler
 
 import ssl
@@ -47,7 +46,7 @@ st.line_chart(data= dados, x='date', y='dollars_per_barrel',
 
 #>>>>>>>>> TABS
 
-tab1, tab2, tab3, tab4 = st.tabs(["Modelo", "Dashboard", "Contexto Histórico", "Info"])
+tab1, tab2, tab3 = st.tabs(["Modelo", "Dashboard", "Info"])
 
 with tab1:
     #Modelo de Machine Learning
@@ -183,12 +182,6 @@ with tab2:
     st.image('images/Imagem6-6.png')
 
 with tab3:
-    #Situações geopoliticas que podem ter impactado em certos momentos na demanda pelo barril
-    st.subheader('Contexto Histórico', divider = 'orange')
-    st.image('images/Imagem2-2.png')
-    
-with tab4:
-    #Situações geopoliticas que podem ter impactado em certos momentos na demanda pelo barril
     st.subheader('Informações sobre o trabalho', divider = 'orange')
     st.markdown('**GRUPO 41: Giuliana de Sousa Fernandes RM352002 e Larissa Suelen Lima da Silva RM350906**')
     st.markdown('Dados adquiridos no site da EIA - U.S. Energy Information Administration')
