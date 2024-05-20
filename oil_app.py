@@ -182,7 +182,7 @@ with tab2:
     st.image('images/Imagem6-6.png')
 
 with tab3:
-    st.subheader('Informações sobre o trabalho', divider = 'orange')
+    st.subheader('Informações sobre o trabalho:', divider = 'orange')
     st.markdown('**GRUPO 41: Giuliana de Sousa Fernandes RM352002 e Larissa Suelen Lima da Silva RM350906**')
     st.markdown('Dados adquiridos no site da EIA - U.S. Energy Information Administration')
     
